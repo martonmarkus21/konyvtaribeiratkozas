@@ -55,7 +55,7 @@
 		</StackPanel>
 
 		<StackPanel Grid.Row="5" Margin="0,10">
-			<Button Name="btnMentes" Content="Mentés" Width="100" Height="30"/>
+			<Button Name="btnMentes" Content="Mentés" Width="100" Height="30" Click="btnMentes_Click"/>
 			<TextBlock Name="txtVisszajelzes" Text="" Margin="0,10" TextWrapping="Wrap"/>
 			<TextBlock Text="Regisztrált olvasók:" FontWeight="Bold"/>
 			<ListBox Name="lstOlvasok" Height="150"/>

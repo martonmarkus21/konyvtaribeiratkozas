@@ -16,9 +16,41 @@ namespace konyvtaribeiratkozas
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		private string filePath = "olvasok.txt";
+
+		public MainWindow()
         {
-            InitializeComponent();
+			InitializeComponent();
         }
-    }
+
+		private void btnMentes_Click(object sender, RoutedEventArgs e)
+		{
+			if (!int.TryParse(txtEletkor.Text, out int eletkor))
+			{
+				MessageBox.Show("Az életkor csak szám lehet!");
+				return;
+			}
+
+			string mufaj = (cmbMufaj.SelectedItem as System.Windows.Controls.ComboBoxItem)?.Content.ToString() ?? "nincs kiválasztva";
+
+			string ertesitesek = "";
+			if (chkHirlevel.IsChecked == true) ertesitesek += "Hírlevél ";
+			if (chkSms.IsChecked == true) ertesitesek += "SMS ";
+			if (string.IsNullOrEmpty(ertesitesek)) ertesitesek = "nincs";
+
+			string tagsag = rbNormal.IsChecked == true ? "Normál" :
+							rbDiak.IsChecked == true ? "Diák" :
+							rbNyugdijas.IsChecked == true ? "Nyugdíjas" :
+							"nincs kiválasztva";
+
+			Olvaso ujOlvaso = new Olvaso
+			{
+				Nev = txtNev.Text,
+				Eletkor = eletkor,
+				Mufaj = mufaj,
+				Ertesitesek = ertesitesek,
+				Tagsag = tagsag
+			};
+		}
+	}
 }
