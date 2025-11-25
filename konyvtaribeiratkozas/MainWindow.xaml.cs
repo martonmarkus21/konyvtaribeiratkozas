@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,8 +21,25 @@ namespace konyvtaribeiratkozas
 
 		public MainWindow()
         {
+			Betoltes();
 			InitializeComponent();
         }
+
+		private void Betoltes()
+		{
+			if (File.Exists(filePath))
+			{
+				string[] sorok = File.ReadAllLines(filePath);
+				foreach (string sor in sorok)
+				{
+					string[] adatok = sor.Split(';');
+					if (adatok.Length >= 5)
+					{
+						lstOlvasok.Items.Add(adatok[0]);
+					}
+				}
+			}
+		}
 
 		private void btnMentes_Click(object sender, RoutedEventArgs e)
 		{
@@ -51,6 +69,10 @@ namespace konyvtaribeiratkozas
 				Ertesitesek = ertesitesek,
 				Tagsag = tagsag
 			};
+
+			File.AppendAllText(filePath, ujOlvaso.ToString() + Environment.NewLine);
+			txtVisszajelzes.Text = "Regisztráció sikeres volt!";
+			lstOlvasok.Items.Add(ujOlvaso.Nev);
 		}
 	}
 }
