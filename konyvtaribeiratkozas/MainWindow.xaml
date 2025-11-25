@@ -6,7 +6,59 @@
         xmlns:local="clr-namespace:konyvtaribeiratkozas"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-    </Grid>
+		<StackPanel Grid.Row="0" Margin="0,5">
+			<TextBlock Text="Név:" FontWeight="Bold"/>
+			<TextBox Name="txtNev" Width="200"/>
+		</StackPanel>
+
+		<StackPanel Grid.Row="1" Margin="0,5">
+			<TextBlock Text="Életkor:" FontWeight="Bold"/>
+			<TextBox Name="txtEletkor" Width="100"/>
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" Margin="0,5">
+			<TextBlock Text="Kedvenc műfaj:" FontWeight="Bold"/>
+			<ComboBox Name="cmbMufaj" Width="200">
+				<ComboBoxItem Content="Regény"/>
+				<ComboBoxItem Content="Sci-fi"/>
+				<ComboBoxItem Content="Fantasy"/>
+				<ComboBoxItem Content="Ismeretterjesztő"/>
+				<ComboBoxItem Content="Mese"/>
+			</ComboBox>
+		</StackPanel>
+
+		<StackPanel Grid.Row="3" Margin="0,5">
+			<TextBlock Text="Értesítések:" FontWeight="Bold"/>
+			<WrapPanel>
+				<CheckBox Name="chkHirlevel" Content="Hírlevél" Margin="5"/>
+				<CheckBox Name="chkSms" Content="SMS értesítés" Margin="5"/>
+			</WrapPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="4" Margin="0,5">
+			<TextBlock Text="Tagsági típus:" FontWeight="Bold"/>
+			<StackPanel Orientation="Horizontal">
+				<RadioButton Name="rbNormal" Content="Normál" GroupName="Tagsag" Margin="5"/>
+				<RadioButton Name="rbDiak" Content="Diák" GroupName="Tagsag" Margin="5"/>
+				<RadioButton Name="rbNyugdijas" Content="Nyugdíjas" GroupName="Tagsag" Margin="5"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="5" Margin="0,10">
+			<Button Name="btnMentes" Content="Mentés" Width="100" Height="30"/>
+			<TextBlock Name="txtVisszajelzes" Text="" Margin="0,10" TextWrapping="Wrap"/>
+			<TextBlock Text="Regisztrált olvasók:" FontWeight="Bold"/>
+			<ListBox Name="lstOlvasok" Height="150"/>
+		</StackPanel>
+	</Grid>
 </Window>
