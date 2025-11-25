@@ -21,8 +21,8 @@ namespace konyvtaribeiratkozas
 
 		public MainWindow()
         {
-			Betoltes();
 			InitializeComponent();
+			Betoltes();
         }
 
 		private void Betoltes()
@@ -73,6 +73,15 @@ namespace konyvtaribeiratkozas
 			File.AppendAllText(filePath, ujOlvaso.ToString() + Environment.NewLine);
 			txtVisszajelzes.Text = "Regisztráció sikeres volt!";
 			lstOlvasok.Items.Add(ujOlvaso.Nev);
+
+			txtNev.Clear();
+			txtEletkor.Clear();
+			cmbMufaj.SelectedIndex = -1;
+			chkHirlevel.IsChecked = false;
+			chkSms.IsChecked = false;
+			rbNormal.IsChecked = false;
+			rbDiak.IsChecked = false;
+			rbNyugdijas.IsChecked = false;
 		}
 	}
 }
